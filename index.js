@@ -3,7 +3,9 @@ import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 
 
-mongoose.connect('mongodb+srv://fnixsikweb:<db_password>@cluster0.ofxzcwj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://fnixsikweb:fnixsikweb@testlink.adn3x.mongodb.net/?retryWrites=true&w=majority&appName=TestLink',)
+.then( ()=> console.log(' db Ok '))
+.catch( (err)=> console.log(' db Error  ', err))
 
 const app = express();
 app.use(express.json());
@@ -13,20 +15,8 @@ app.get('/', (req, res) => {
     res.send('Main  page')
 })
 
-app.post('/auth/login', (req, res) => {
-    console.log(req.body);
-
-    const token = jwt.sign(
-        {
-            email: req.body.email,
-            fullName: 'Вася Пупкин',
-        }, 'secretWord',
-    );
-
-    res.json({
-        success: true,
-        token
-    })
+app.post('/auth/register', (req, res) => {
+    
 })
 
 
